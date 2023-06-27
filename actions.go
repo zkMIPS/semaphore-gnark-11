@@ -8,7 +8,9 @@ import (
 	"github.com/bnb-chain/zkbnb-setup/phase1"
 	"github.com/bnb-chain/zkbnb-setup/phase2"
 	"github.com/urfave/cli/v2"
+	deserializer "github.com/worldcoin/ptau-deserializer/deserialize"
 )
+
 func p1t(cCtx *cli.Context) error {
 	// sanity check
 	if cCtx.Args().Len() != 4 {
@@ -62,6 +64,32 @@ func p1c(cCtx *cli.Context) error {
 	return err
 }
 
+func p1i(cCtx *cli.Context) error {
+	ptauFilePath := cCtx.Args().Get(0)
+	outputFilePath := cCtx.Args().Get(1)
+
+	ptau, err := deserializer.ReadPtau(ptauFilePath)
+
+	if err != nil {
+		return err
+	}
+
+	phase1, err := deserializer.ConvertPtauToPhase1(ptau)
+
+	if err != nil {
+		return err
+	}
+
+	// Write phase1 to file
+	err = deserializer.WritePhase1(phase1, uint8(ptau.Header.Power), outputFilePath)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func p1v(cCtx *cli.Context) error {
 	// sanity check
 	if cCtx.Args().Len() != 1 {
@@ -78,7 +106,7 @@ func p1vt(cCtx *cli.Context) error {
 		return errors.New("please provide the correct arguments")
 	}
 	inputPath := cCtx.Args().Get(0)
-	transformedPath :=cCtx.Args().Get(1)
+	transformedPath := cCtx.Args().Get(1)
 	err := phase1.Verify(inputPath, transformedPath)
 	return err
 }

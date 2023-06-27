@@ -27,6 +27,12 @@ func main() {
 				Description: "contribute phase 1 randomness for Groth16",
 				Action:      p1c,
 			},
+			{
+				Name:        "p1i",
+				Usage:       "p1i <inputPath> <outputPath>",
+				Description: "Deserialize snarkjs .ptau file into gnark's phase1 format and write to `OUTPUT`.ph1",
+				Action:      p1i,
+			},
 			/* ----------------------------- Phase 1 Verify ----------------------------- */
 			{
 				Name:        "p1v",
