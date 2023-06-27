@@ -9,9 +9,9 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/bnb-chain/zkbnb-setup/phase1"
 	"github.com/consensys/gnark-crypto/ecc/bn254"
 	cs_bn254 "github.com/consensys/gnark/constraint/bn254"
+	"github.com/worldcoin/semaphore-mtb-setup/phase1"
 )
 
 func InitializeFromPartedR1CS(phase1Path, session, phase2Path string, nbCons, nbR1C, batchSize int) error {
@@ -120,7 +120,7 @@ func processEvaluationsParted(r1cs *cs_bn254.R1CS, r1csPrefix string, nbCons, nb
 
 	// Read [α]₁ , [β]₁ , [β]₂  from phase1 (Check Phase 1 file format for reference)
 	alpha, beta1, beta2, err := readPhase1(phase1File, header1.Power)
-	if err!= nil {
+	if err != nil {
 		return err
 	}
 

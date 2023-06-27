@@ -4,11 +4,11 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/bnb-chain/zkbnb-setup/keys"
-	"github.com/bnb-chain/zkbnb-setup/phase1"
-	"github.com/bnb-chain/zkbnb-setup/phase2"
 	"github.com/urfave/cli/v2"
 	deserializer "github.com/worldcoin/ptau-deserializer/deserialize"
+	"github.com/worldcoin/semaphore-mtb-setup/keys"
+	"github.com/worldcoin/semaphore-mtb-setup/phase1"
+	"github.com/worldcoin/semaphore-mtb-setup/phase2"
 )
 
 func p1t(cCtx *cli.Context) error {

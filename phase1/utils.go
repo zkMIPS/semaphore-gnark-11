@@ -9,10 +9,10 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/bnb-chain/zkbnb-setup/common"
 	"github.com/consensys/gnark-crypto/ecc"
 	"github.com/consensys/gnark-crypto/ecc/bn254"
 	"github.com/consensys/gnark-crypto/ecc/bn254/fr"
+	"github.com/worldcoin/semaphore-mtb-setup/common"
 )
 
 const batchSize = 1048576 // 2^20

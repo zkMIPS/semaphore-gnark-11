@@ -4,8 +4,8 @@ import (
 	"crypto/sha256"
 	"io"
 
-	"github.com/bnb-chain/zkbnb-setup/common"
 	"github.com/consensys/gnark-crypto/ecc/bn254"
+	"github.com/worldcoin/semaphore-mtb-setup/common"
 )
 
 type Contribution struct {

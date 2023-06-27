@@ -9,9 +9,9 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/bnb-chain/zkbnb-setup/common"
 	"github.com/consensys/gnark-crypto/ecc/bn254"
 	"github.com/consensys/gnark-crypto/ecc/bn254/fr"
+	"github.com/worldcoin/semaphore-mtb-setup/common"
 )
 
 func Transform(inputPath, outputPath string, inPower, outPower byte) error {
@@ -326,7 +326,7 @@ func Verify(inputPath, transformedPath string) error {
 	// Verify contributions
 	var current Contribution
 	prev, err := defaultContribution(transformedPath)
-	if err!=nil {
+	if err != nil {
 		return err
 	}
 	for i := 0; i < int(header.Contributions); i++ {

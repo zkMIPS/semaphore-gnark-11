@@ -7,13 +7,13 @@ import (
 	"github.com/consensys/gnark/backend/groth16"
 	"github.com/consensys/gnark/std/hash/mimc"
 
-	"github.com/bnb-chain/zkbnb-setup/keys"
-	"github.com/bnb-chain/zkbnb-setup/phase1"
-	"github.com/bnb-chain/zkbnb-setup/phase2"
 	"github.com/consensys/gnark-crypto/ecc"
 	"github.com/consensys/gnark-crypto/ecc/bn254"
 	"github.com/consensys/gnark/frontend"
 	"github.com/consensys/gnark/frontend/cs/r1cs"
+	"github.com/worldcoin/semaphore-mtb-setup/keys"
+	"github.com/worldcoin/semaphore-mtb-setup/phase1"
+	"github.com/worldcoin/semaphore-mtb-setup/phase2"
 )
 
 // Circuit defines a pre-image knowledge proof

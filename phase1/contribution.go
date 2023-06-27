@@ -6,8 +6,8 @@ import (
 	"math"
 	"os"
 
-	"github.com/bnb-chain/zkbnb-setup/common"
 	"github.com/consensys/gnark-crypto/ecc/bn254"
+	"github.com/worldcoin/semaphore-mtb-setup/common"
 )
 
 const ContributionSize = 640

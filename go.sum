@@ -4,8 +4,6 @@ github.com/bnb-chain/gnark v0.7.2-0.20230417083854-81e50b01d1ec h1:ZshccfVvMR24o
 github.com/bnb-chain/gnark v0.7.2-0.20230417083854-81e50b01d1ec/go.mod h1:fmHUzzss1n32K3COWMvrQj7uo7GjIeIr1wXzjj5gmj8=
 github.com/bnb-chain/gnark-crypto v0.8.1-0.20230412133626-30223a679fb7 h1:ME5Nif4WgGgWKH2omB6ybic5bsU22bHy43xBsgMBHgM=
 github.com/bnb-chain/gnark-crypto v0.8.1-0.20230412133626-30223a679fb7/go.mod h1:a2DQL4+5ywF6safEeZFEPGRiiGbjzGFRUN2sg06VuU4=
-github.com/bnb-chain/zkbnb-setup v1.0.0-ceremony h1:f1/jXyWkcWwGuarkaD9fQuR6kfzG1ax/vh0fVfy7aYM=
-github.com/bnb-chain/zkbnb-setup v1.0.0-ceremony/go.mod h1:YIVxE7MgQst3U/ZG6PmfltsIqB15SPJJdLf5aP+mzBQ=
 github.com/consensys/bavard v0.1.13 h1:oLhMLOFGTLdlda/kma4VOJazblc7IM5y5QPd2A/YjhQ=
 github.com/consensys/bavard v0.1.13/go.mod h1:9ItSMtA/dXMAiL7BG6bqW2m3NdSEObYWoH223nGHukI=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=

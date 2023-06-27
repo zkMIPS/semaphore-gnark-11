@@ -11,14 +11,14 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/bnb-chain/zkbnb-setup/common"
-	"github.com/bnb-chain/zkbnb-setup/phase1"
 	"github.com/consensys/gnark-crypto/ecc"
 	"github.com/consensys/gnark-crypto/ecc/bn254"
 	"github.com/consensys/gnark-crypto/ecc/bn254/fr"
 	"github.com/consensys/gnark-crypto/ecc/bn254/fr/fft"
 	"github.com/consensys/gnark/constraint"
 	cs_bn254 "github.com/consensys/gnark/constraint/bn254"
+	"github.com/worldcoin/semaphore-mtb-setup/common"
+	"github.com/worldcoin/semaphore-mtb-setup/phase1"
 )
 
 func nextPowerofTwo(number int) int {
