@@ -4,7 +4,7 @@ This tool allows users to run MPC ceremony for generating the proving and verify
 
 ## Semaphore Merkle Tree Batcher (SMTB)
 
-SMTB is a service for batch processing of Merkle tree updates. It is designed to be used in conjunction with [Semaphore](https://github.com/semaphore-protocol/semaphore). It accepts Merkle tree updates and batches them together into a single one. This is useful for reducing the number of transactions that need to be submitted to the blockchain. The correctness of the batched Merkle tree update is assured through the generation of a SNARK (generated through [gnark](https://github.com/ConsenSys/gnark)).
+SMTB is a service for batch processing of Merkle tree updates. It is designed to be used in conjunction with the [World ID contracts](https://github.com/worldcoin/world-id-contracts) which use [Semaphore](https://github.com/semaphore-protocol/semaphore) as a dependency. It accepts Merkle tree updates and batches them together into a single one. This is useful for reducing the number of transactions that need to be submitted to the blockchain. The correctness of the batched Merkle tree update is assured through the generation of a SNARK (generated through [gnark](https://github.com/ConsenSys/gnark)).
 
 ## Reasoning behind a custom trusted setup
 
@@ -95,3 +95,7 @@ This is a sequential process that will be repeated for each contributor.
 ## Acknowledgements
 
 This repository is a fork of the [zkbnb-setup](https://github.com/bnb-chain/zkbnb-setup/) repository. We would like to thank the authors of the original repository for their work as this project is a slight tweak of the original work in order to fit our needs.
+
+We appreciate the community efforts to generate [a good universal SRS](https://github.com/privacy-scaling-explorations/perpetualpowersoftau) for everyone's benefit to use and for the [iden3 team for building [snarkjs](https://github.com/iden3/snarkjs).
+
+Also a special thank you to [Kobi Gurkan](https://twitter.com/kobigurk) for his contributions to the [ptau-deserialzier](https://github.com/worldcoin/ptau-deserializer) tool and his advice on the trusted setup process.
