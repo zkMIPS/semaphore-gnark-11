@@ -1,6 +1,6 @@
 # Guide to the Semaphore Merkle Tree Batcher MPC Contribution Ceremony
 
-This tool allows users to run an MPC ceremony for generating the proving and verifying keys for the Groth16 protocol as presented in [BGM17](https://eprint.iacr.org/2017/1050.pdf). We removed the beacon contribution since it was proved in [KMSV21](https://eprint.iacr.org/2021/219.pdf) that the security of the generated SRS still holds without it.
+This tool allows users to run an MPC ceremony for generating the proving and verifying keys for the Groth16 protocol as presented in [BGM17](https://eprint.iacr.org/2017/1050.pdf). It does not include the beacon contribution since it was proved in [KMSV21](https://eprint.iacr.org/2021/219.pdf) that the security of the generated SRS still holds without it.
 
 ## Semaphore Merkle Tree Batcher (SMTB)
 
