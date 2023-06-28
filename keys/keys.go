@@ -2,7 +2,6 @@ package keys
 
 import (
 	"bufio"
-	"encoding/gob"
 	"fmt"
 	"io"
 	"os"
@@ -32,42 +31,34 @@ type VerifyingKey struct {
 }
 
 func (vk *VerifyingKey) writeTo(w io.Writer) (int64, error) {
-	n, err := vk.CommitmentKey.WriteTo(w)
-	if err != nil {
-		return n, err
-	}
 	enc := bn254.NewEncoder(w, bn254.RawEncoding())
 
 	// [α]1,[β]1,[β]2,[γ]2,[δ]1,[δ]2
 	if err := enc.Encode(&vk.G1.Alpha); err != nil {
-		return n + enc.BytesWritten(), err
+		return enc.BytesWritten(), err
 	}
 	if err := enc.Encode(&vk.G1.Beta); err != nil {
-		return n + enc.BytesWritten(), err
+		return enc.BytesWritten(), err
 	}
 	if err := enc.Encode(&vk.G2.Beta); err != nil {
-		return n + enc.BytesWritten(), err
+		return enc.BytesWritten(), err
 	}
 	if err := enc.Encode(&vk.G2.Gamma); err != nil {
-		return n + enc.BytesWritten(), err
+		return enc.BytesWritten(), err
 	}
 	if err := enc.Encode(&vk.G1.Delta); err != nil {
-		return n + enc.BytesWritten(), err
+		return enc.BytesWritten(), err
 	}
 	if err := enc.Encode(&vk.G2.Delta); err != nil {
-		return n + enc.BytesWritten(), err
+		return enc.BytesWritten(), err
 	}
 
 	// uint32(len(Kvk)),[Kvk]1
 	if err := enc.Encode(vk.G1.K); err != nil {
-		return n + enc.BytesWritten(), err
+		return enc.BytesWritten(), err
 	}
 
-	encGob := gob.NewEncoder(w)
-	if err := encGob.Encode(vk.CommitmentInfo); err != nil {
-		return n + enc.BytesWritten(), err
-	}
-	return n + enc.BytesWritten(), nil
+	return enc.BytesWritten(), nil
 }
 
 func extractPK(phase2Path string) error {
