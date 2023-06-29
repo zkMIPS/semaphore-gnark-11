@@ -119,7 +119,7 @@ func Contribute(inputPath, outputPath string) error {
 	}
 
 	// Process Z using δ⁻¹
-	if err = scale(dec, enc, header.Domain-1, &deltaInvBI); err != nil {
+	if err = scale(dec, enc, header.Domain, &deltaInvBI); err != nil {
 		return err
 	}
 
@@ -221,7 +221,7 @@ func Verify(inputPath, originPath string) error {
 
 	// Check Z is updated correctly from origin to the latest state
 	fmt.Println("Verifying update of Z")
-	if err := verifyParameter(&d2, &g2, inputDec, originDec, curHeader.Domain-1, "Z"); err != nil {
+	if err := verifyParameter(&d2, &g2, inputDec, originDec, curHeader.Domain, "Z"); err != nil {
 		return err
 	}
 

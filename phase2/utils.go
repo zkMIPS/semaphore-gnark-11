@@ -263,7 +263,6 @@ func processDeltaAndZ(header1 *phase1.Header, header2 *Header, phase1File, phase
 		Z[i].Sub(&tauG1[i+n], &tauG1[i])
 	}
 	common.BitReverseG1(Z)
-	Z = Z[:n-1]
 
 	// Write Z
 	for i := 0; i < len(Z); i++ {
