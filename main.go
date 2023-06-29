@@ -28,13 +28,6 @@ func main() {
 				Description: "initialize phase 2 for the given circuit",
 				Action:      p2n,
 			},
-			/* ------------------- Phase 2 Initialize from parted R1CS ------------------ */
-			{
-				Name:        "p2np",
-				Usage:       "p2np <phase1Path> <r1csPath> <outputPhase2> <#constraints> <#R1C> <batchSize>",
-				Description: "initialize phase 2 for the given circuit parted R1CS",
-				Action:      p2np,
-			},
 			/* --------------------------- Phase 2 Contribute --------------------------- */
 			{
 				Name:        "p2c",
@@ -55,12 +48,6 @@ func main() {
 				Usage:       "key <inputPath>",
 				Description: "extract proving and verifying keys",
 				Action:      extract,
-			},
-			{
-				Name:        "keys",
-				Usage:       "keys <inputPath> <session>",
-				Description: "extract proving and verifying keys split",
-				Action:      extracts,
 			},
 			{
 				Name:        "sol",

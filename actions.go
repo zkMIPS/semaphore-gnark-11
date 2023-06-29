@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/urfave/cli/v2"
+	deserializer "github.com/worldcoin/ptau-deserializer/deserialize"
 	"github.com/worldcoin/semaphore-mtb-setup/keys"
 	"github.com/worldcoin/semaphore-mtb-setup/phase1"
 	"github.com/worldcoin/semaphore-mtb-setup/phase2"
@@ -64,27 +65,27 @@ func p1c(cCtx *cli.Context) error {
 }
 
 func p1i(cCtx *cli.Context) error {
-	//ptauFilePath := cCtx.Args().Get(0)
-	//outputFilePath := cCtx.Args().Get(1)
-	//
-	//ptau, err := deserializer.ReadPtau(ptauFilePath)
-	//
-	//if err != nil {
-	//	return err
-	//}
-	//
-	//phase1, err := deserializer.ConvertPtauToPhase1(ptau)
-	//
-	//if err != nil {
-	//	return err
-	//}
-	//
-	//// Write phase1 to file
-	//err = deserializer.WritePhase1(phase1, uint8(ptau.Header.Power), outputFilePath)
-	//
-	//if err != nil {
-	//	return err
-	//}
+	ptauFilePath := cCtx.Args().Get(0)
+	outputFilePath := cCtx.Args().Get(1)
+
+	ptau, err := deserializer.ReadPtau(ptauFilePath)
+
+	if err != nil {
+		return err
+	}
+
+	phase1, err := deserializer.ConvertPtauToPhase1(ptau)
+
+	if err != nil {
+		return err
+	}
+
+	// Write phase1 to file
+	err = deserializer.WritePhase1(phase1, uint8(ptau.Header.Power), outputFilePath)
+
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -123,34 +124,6 @@ func p2n(cCtx *cli.Context) error {
 	return err
 }
 
-func p2np(cCtx *cli.Context) error {
-	// sanity check
-	if cCtx.Args().Len() != 6 {
-		return errors.New("please provide the correct arguments")
-	}
-
-	phase1Path := cCtx.Args().Get(0)
-	r1csPath := cCtx.Args().Get(1)
-	phase2Path := cCtx.Args().Get(2)
-	nbCons, err := strconv.Atoi(cCtx.Args().Get(3))
-	if err != nil {
-		return err
-	}
-
-	nbR1C, err := strconv.Atoi(cCtx.Args().Get(4))
-	if err != nil {
-		return err
-	}
-
-	batchSize, err := strconv.Atoi(cCtx.Args().Get(5))
-	if err != nil {
-		return err
-	}
-
-	err = phase2.InitializeFromPartedR1CS(phase1Path, r1csPath, phase2Path, nbCons, nbR1C, batchSize)
-	return err
-}
-
 func p2c(cCtx *cli.Context) error {
 	// sanity check
 	if cCtx.Args().Len() != 2 {
@@ -180,17 +153,6 @@ func extract(cCtx *cli.Context) error {
 	}
 	inputPath := cCtx.Args().Get(0)
 	err := keys.ExtractKeys(inputPath)
-	return err
-}
-
-func extracts(cCtx *cli.Context) error {
-	// sanity check
-	if cCtx.Args().Len() != 2 {
-		return errors.New("please provide the correct arguments")
-	}
-	inputPath := cCtx.Args().Get(0)
-	session := cCtx.Args().Get(1)
-	err := keys.ExtractSplitKeys(inputPath, session)
 	return err
 }
 
