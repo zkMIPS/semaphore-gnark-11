@@ -47,7 +47,7 @@ func (c *Contribution) readFrom(reader io.Reader) (int64, error) {
 		}
 	}
 	c.Hash = make([]byte, 32)
-	nBytes, err := reader.Read(c.Hash)
+	nBytes, err := io.ReadFull(reader, c.Hash)
 	return int64(nBytes), err
 }
 
