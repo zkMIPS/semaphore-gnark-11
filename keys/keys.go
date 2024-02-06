@@ -26,7 +26,7 @@ type VerifyingKey struct {
 		Beta, Delta, Gamma bn254.G2Affine
 	}
 
-	CommitmentKey  pedersen.Key
+	CommitmentKey  pedersen.VerifyingKey
 	CommitmentInfo constraint.Commitment // since the verifier doesn't input a constraint system, this needs to be provided here
 }
 
@@ -308,7 +308,7 @@ func extractVK(phase2Path string) error {
 	if err := decEvals.Decode(&ckk); err != nil {
 		return err
 	}
-	vk.CommitmentKey, err = pedersen.Setup(ckk)
+	_, vk.CommitmentKey, err = pedersen.Setup(ckk)
 	if err != nil {
 		return err
 	}
