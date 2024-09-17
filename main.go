@@ -17,21 +17,21 @@ func main() {
 			/* ----------------------------- Phase 1 Import ----------------------------- */
 			{
 				Name:        "p1i",
-				Usage:       "p1i <inputPath> <outputPath>",
+				Usage:       "p1i <inputPtau> <outputPh1>",
 				Description: "Deserialize snarkjs .ptau file into gnark's phase1 format and write to `OUTPUT`.ph1",
 				Action:      p1i,
 			},
 			/* --------------------------- Phase 2 Initialize --------------------------- */
 			{
 				Name:        "p2n",
-				Usage:       "p2n <phase1Path> <r1csPath> <phase2Path>",
+				Usage:       "p2n <inputPh1> <inputR1cs> <outputPh2>",
 				Description: "initialize phase 2 for the given circuit",
 				Action:      p2n,
 			},
 			/* --------------------------- Phase 2 Contribute --------------------------- */
 			{
 				Name:        "p2c",
-				Usage:       "p2c <inputPath> <outputPath>",
+				Usage:       "p2c <inputPh2> <outputPh2>",
 				Description: "contribute phase 2 randomness for Groth16",
 				Action:      p2c,
 			},
@@ -45,13 +45,13 @@ func main() {
 			/* ----------------------------- Keys Extraction ---------------------------- */
 			{
 				Name:        "key",
-				Usage:       "key <inputPath>",
+				Usage:       "key <inputPh2>",
 				Description: "extract proving and verifying keys",
 				Action:      extract,
 			},
 			{
 				Name:        "sol",
-				Usage:       "sol <session>",
+				Usage:       "sol <verifyingKey>",
 				Description: "export verifier smart contract from verifying key",
 				Action:      exportSol,
 			},
