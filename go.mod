@@ -1,6 +1,6 @@
 module github.com/worldcoin/semaphore-mtb-setup
 
-go 1.21
+go 1.22
 
 toolchain go1.22.3
 
@@ -8,7 +8,7 @@ require (
 	github.com/consensys/gnark v0.10.1-0.20240504023521-d9bfacd7cb60
 	github.com/consensys/gnark-crypto v0.12.2-0.20240504013751-564b6f724c3b
 	github.com/urfave/cli/v2 v2.25.7
-	github.com/worldcoin/ptau-deserializer v0.1.3
+	github.com/worldcoin/ptau-deserializer v0.2.0
 )
 
 require (

@@ -57,8 +57,8 @@ func processHeader(r1csPath string, phase1File, phase2File *os.File) (*phase1.He
 	if err := header1.ReadFrom(phase1File); err != nil {
 		return nil, nil, err
 	}
-	N := int(math.Pow(2, float64(header1.Power)))
-	if N < header2.Constraints {
+	N := uint64(math.Pow(2, float64(header1.Power)))
+	if uint64(header2.Constraints) > N {
 		return nil, nil, fmt.Errorf("phase 1 parameters can support up to %d, but the circuit #Constraints are %d", N, header2.Constraints)
 	}
 	// Initialize Domain, #Wires, #Witness, #Public, #PrivateCommitted
@@ -95,7 +95,7 @@ func processHeader(r1csPath string, phase1File, phase2File *os.File) (*phase1.He
 func processLagrange(header1 *phase1.Header, header2 *Header, phase1File, phase2File *os.File) error {
 	fmt.Println("Converting to Lagrange basis ...")
 	domain := fft.NewDomain(uint64(header2.Domain))
-	N := int(math.Pow(2, float64(header1.Power)))
+	N := uint64(math.Pow(2, float64(header1.Power)))
 
 	lagFile, err := os.Create("srs.lag")
 	if err != nil {

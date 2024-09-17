@@ -1,8 +1,10 @@
 package main
 
 import (
+	"os"
 	"errors"
 	"strconv"
+	"fmt"
 
 	"github.com/urfave/cli/v2"
 	deserializer "github.com/worldcoin/ptau-deserializer/deserialize"
@@ -75,20 +77,25 @@ func p1i(cCtx *cli.Context) error {
 	}
 
 	phase1, err := deserializer.ConvertPtauToPhase1(ptau)
+	if err != nil {
+		return err
+	}
+	fmt.Println("Phase1 generated")
 
+	outputFile, err := os.Create(outputFilePath)
 	if err != nil {
 		return err
 	}
 
-	// Write phase1 to file
-	err = deserializer.WritePhase1(phase1, uint8(ptau.Header.Power), outputFilePath)
-
+	_, err = phase1.WriteTo(outputFile)
 	if err != nil {
 		return err
 	}
+	fmt.Println("Phase1 written to", outputFilePath)
 
 	return nil
 }
+
 
 func p1v(cCtx *cli.Context) error {
 	// sanity check
