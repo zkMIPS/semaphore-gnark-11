@@ -24,7 +24,7 @@ func main() {
 			/* --------------------------- Phase 2 Initialize --------------------------- */
 			{
 				Name:        "p2n",
-				Usage:       "p2n <inputPh1> <inputR1cs> <outputPh2>",
+				Usage:       "p2n <inputPh1> <inputR1cs> <outputPh2> <outputEvals>",
 				Description: "initialize phase 2 for the given circuit",
 				Action:      p2n,
 			},
