@@ -9,7 +9,7 @@ import (
 	deserializer "github.com/worldcoin/ptau-deserializer/deserialize"
 	cs "github.com/consensys/gnark/constraint/bn254"
 	"github.com/consensys/gnark/backend/groth16/bn254/mpcsetup"
-	"github.com/worldcoin/semaphore-mtb-setup/keys"
+	groth16 "github.com/consensys/gnark/backend/groth16/bn254"
 	"github.com/worldcoin/semaphore-mtb-setup/phase1"
 	"github.com/worldcoin/semaphore-mtb-setup/phase2"
 )
@@ -311,7 +311,20 @@ func exportSol(cCtx *cli.Context) error {
 	if cCtx.Args().Len() != 1 {
 		return errors.New("please provide the correct arguments")
 	}
-	session := cCtx.Args().Get(0)
-	err := keys.ExportSol(session)
+
+	vkPath := cCtx.Args().Get(0)
+	vk := &groth16.VerifyingKey{}
+	vkFile, err := os.Open(vkPath)
+	if err != nil {
+		return err
+	}
+	vk.ReadFrom(vkFile)
+
+	solFile, err := os.Create("verifier.sol")
+	if err != nil {
+		return err
+	}
+
+	err = vk.ExportSolidity(solFile)
 	return err
 }
