@@ -45,7 +45,7 @@ func main() {
 			/* ----------------------------- Keys Extraction ---------------------------- */
 			{
 				Name:        "key",
-				Usage:       "key <inputPh2>",
+				Usage:       "key <phase1Path> <phase2Path> <phase2EvalsPath> <r1csPath>",
 				Description: "extract proving and verifying keys",
 				Action:      extract,
 			},

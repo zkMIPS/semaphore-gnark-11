@@ -4,7 +4,6 @@ import (
 	"os"
 	"errors"
 	"strconv"
-	"fmt"
 
 	"github.com/urfave/cli/v2"
 	deserializer "github.com/worldcoin/ptau-deserializer/deserialize"
@@ -208,26 +207,37 @@ func p1v(cCtx *cli.Context) error {
 	return err
 }
 
-func p1vt(cCtx *cli.Context) error {
-	// sanity check
-	if cCtx.Args().Len() != 2 {
-		return errors.New("please provide the correct arguments")
-	}
-	inputPath := cCtx.Args().Get(0)
-	transformedPath := cCtx.Args().Get(1)
-	err := phase1.Verify(inputPath, transformedPath)
-	return err
-}
+// func p2c(cCtx *cli.Context) error {
+// 	// sanity check
+// 	if cCtx.Args().Len() != 2 {
+// 		return errors.New("please provide the correct arguments")
+// 	}
+// 	inputPath := cCtx.Args().Get(0)
+// 	outputPath := cCtx.Args().Get(1)
+// 	err := phase2.Contribute(inputPath, outputPath)
+// 	return err
+// }
 
 func p2c(cCtx *cli.Context) error {
-	// sanity check
-	if cCtx.Args().Len() != 2 {
-		return errors.New("please provide the correct arguments")
+	inputPh2Path := cCtx.Args().Get(0)
+	outputPh2Path := cCtx.Args().Get(1)
+
+	inputFile, err := os.Open(inputPh2Path)
+	if err != nil {
+		return err
 	}
-	inputPath := cCtx.Args().Get(0)
-	outputPath := cCtx.Args().Get(1)
-	err := phase2.Contribute(inputPath, outputPath)
-	return err
+	phase2 := &mpcsetup.Phase2{}
+	phase2.ReadFrom(inputFile)
+
+	phase2.Contribute()
+
+	outputFile, err := os.Create(outputPh2Path)
+	if err != nil {
+		return err
+	}
+	phase2.WriteTo(outputFile)
+
+	return nil
 }
 
 func p2v(cCtx *cli.Context) error {
@@ -243,12 +253,57 @@ func p2v(cCtx *cli.Context) error {
 
 func extract(cCtx *cli.Context) error {
 	// sanity check
-	if cCtx.Args().Len() != 1 {
+	if cCtx.Args().Len() != 4 {
 		return errors.New("please provide the correct arguments")
 	}
-	inputPath := cCtx.Args().Get(0)
-	err := keys.ExtractKeys(inputPath)
-	return err
+
+	phase1Path := cCtx.Args().Get(0)
+	phase1 := &mpcsetup.Phase1{}
+	phase1File, err := os.Open(phase1Path)
+	if err != nil {
+		return err
+	}
+	phase1.ReadFrom(phase1File)
+
+	phase2Path := cCtx.Args().Get(1)
+	phase2 := &mpcsetup.Phase2{}
+	phase2File, err := os.Open(phase2Path)
+	if err != nil {
+		return err
+	}
+	phase2.ReadFrom(phase2File)
+
+	evalsPath := cCtx.Args().Get(2)
+	evals := &mpcsetup.Phase2Evaluations{}
+	evalsFile, err := os.Open(evalsPath)
+	if err != nil {
+		return err
+	}
+	evals.ReadFrom(evalsFile)
+
+	r1csPath := cCtx.Args().Get(3)
+	r1cs := &cs.R1CS{}
+	r1csFile, err := os.Open(r1csPath)
+	if err != nil {
+		return err
+	}
+	r1cs.ReadFrom(r1csFile)
+
+	pk, vk := mpcsetup.ExtractKeys(r1cs, phase1, phase2, evals)
+
+	pkFile, err := os.Create("pk")
+	if err != nil {
+		return err
+	}
+	pk.WriteTo(pkFile)
+
+	vkFile, err := os.Create("vk")
+	if err != nil {
+		return err
+	}
+	vk.WriteTo(vkFile)
+
+	return nil
 }
 
 func exportSol(cCtx *cli.Context) error {
