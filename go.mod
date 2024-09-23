@@ -1,12 +1,12 @@
-module github.com/worldcoin/semaphore-mtb-setup
+module github.com/mattstam/semaphore-mtb-setup
 
-go 1.22
+go 1.23
 
-toolchain go1.22.1
+toolchain go1.23.1
 
 require (
-	github.com/consensys/gnark v0.10.0
-	github.com/consensys/gnark-crypto v0.13.1-0.20240802214859-ff4c0ddbe1ef
+	github.com/consensys/gnark v0.11.0
+	github.com/consensys/gnark-crypto v0.14.0
 	github.com/urfave/cli/v2 v2.25.7
 	github.com/worldcoin/ptau-deserializer v0.2.0
 )
@@ -26,9 +26,8 @@ require (
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
+	golang.org/x/crypto v0.26.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/sys v0.24.0 // indirect
 	rsc.io/tmplfunc v0.0.3 // indirect
 )
-
-replace github.com/consensys/gnark v0.10.0 => github.com/ewoolsey/gnark v0.10.1

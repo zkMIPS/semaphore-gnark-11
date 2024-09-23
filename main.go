@@ -47,13 +47,13 @@ func main() {
 				Name:        "key",
 				Usage:       "key <phase1Path> <phase2Path> <phase2EvalsPath> <r1csPath>",
 				Description: "extract proving and verifying keys",
-				Action:      extract,
+				Action:      keys,
 			},
 			{
 				Name:        "sol",
 				Usage:       "sol <verifyingKey>",
 				Description: "export verifier smart contract from verifying key",
-				Action:      exportSol,
+				Action:      sol,
 			},
 
 			// Unused since we use the powers of tau ceremony from PPoT
