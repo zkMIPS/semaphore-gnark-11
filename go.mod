@@ -31,3 +31,5 @@ require (
 	golang.org/x/sys v0.24.0 // indirect
 	rsc.io/tmplfunc v0.0.3 // indirect
 )
+
+replace github.com/consensys/gnark => github.com/jtguibas/gnark v0.0.0-20240923234830-41125bc1909c
