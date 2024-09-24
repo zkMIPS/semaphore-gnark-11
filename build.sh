@@ -12,6 +12,11 @@ for ARCH in darwin_amd64 darwin_arm64 linux_386 linux_arm64 linux_arm; do
       export GOARCH=arm64
       export GOOS=darwin
       ;;
+    linux_amd64)
+      # For Linux x86_64 machines
+      export GOARCH=amd64
+      export GOOS=linux
+      ;;
     linux_386)
       # For 32-bit machines
       export GOARCH=386

@@ -69,3 +69,14 @@ jobs:
         asset_path: ./semaphore-mtb-setup-linux_arm64
         asset_name: semaphore-mtb-setup-linux_arm64
         asset_content_type: application/octet-stream
+
+    - name: Upload Linux AMD64 binary
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./semaphore-mtb-setup-linux_amd64
+        asset_name: semaphore-mtb-setup-linux_amd64
+        asset_content_type: application/octet-stream
+
