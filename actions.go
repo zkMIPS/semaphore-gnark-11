@@ -213,3 +213,30 @@ func sol(cCtx *cli.Context) error {
 	err = vk.ExportSolidity(solFile, solidity.WithPragmaVersion("0.8.20"))
 	return err
 }
+
+func ClonePhase1(phase1 *mpcsetup.Phase1) mpcsetup.Phase1 {
+	r := mpcsetup.Phase1{}
+	r.Parameters.G1.Tau = append(r.Parameters.G1.Tau, phase1.Parameters.G1.Tau...)
+	r.Parameters.G1.AlphaTau = append(r.Parameters.G1.AlphaTau, phase1.Parameters.G1.AlphaTau...)
+	r.Parameters.G1.BetaTau = append(r.Parameters.G1.BetaTau, phase1.Parameters.G1.BetaTau...)
+
+	r.Parameters.G2.Tau = append(r.Parameters.G2.Tau, phase1.Parameters.G2.Tau...)
+	r.Parameters.G2.Beta = phase1.Parameters.G2.Beta
+
+	r.PublicKeys = phase1.PublicKeys
+	r.Hash = append(r.Hash, phase1.Hash...)
+
+	return r
+}
+
+func ClonePhase2(phase2 *mpcsetup.Phase2) mpcsetup.Phase2 {
+	r := mpcsetup.Phase2{}
+	r.Parameters.G1.Delta = phase2.Parameters.G1.Delta
+	r.Parameters.G1.L = append(r.Parameters.G1.L, phase2.Parameters.G1.L...)
+	r.Parameters.G1.Z = append(r.Parameters.G1.Z, phase2.Parameters.G1.Z...)
+	r.Parameters.G2.Delta = phase2.Parameters.G2.Delta
+	r.PublicKey = phase2.PublicKey
+	r.Hash = append(r.Hash, phase2.Hash...)
+
+	return r
+}

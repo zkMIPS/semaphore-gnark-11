@@ -9,3 +9,10 @@ pk
 vk
 semaphore-mtb-setup
 .DS_Store
+semaphore-mtb-setup-darwin_amd64
+semaphore-mtb-setup-darwin_arm64
+semaphore-mtb-setup-linux_386
+semaphore-mtb-setup-linux_amd64
+semaphore-mtb-setup-linux_arm64
+semaphore-mtb-setup-linux_arm
+build/

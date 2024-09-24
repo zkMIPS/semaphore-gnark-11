@@ -55,44 +55,6 @@ func main() {
 				Description: "export verifier smart contract from verifying key",
 				Action:      sol,
 			},
-
-			// Unused since we use the powers of tau ceremony from PPoT
-			// /* --------------------------- Phase 1 Initialize --------------------------- */
-			// {
-			// 	Name:        "p1n",
-			// 	Usage:       "p1n <power> <outputPath>",
-			// 	Description: "initialize phase 1 of parameters generation for Groth16",
-			// 	Action:      p1n,
-			// },
-			// /* --------------------------- Phase 1 Contribute --------------------------- */
-			// {
-			// 	Name:        "p1c",
-			// 	Usage:       "p1c <inputPath> <outputPath>",
-			// 	Description: "contribute phase 1 randomness for Groth16",
-			// 	Action:      p1c,
-			// },
-
-			// /* ----------------------------- Phase 1 Verify ----------------------------- */
-			// {
-			// 	Name:        "p1v",
-			// 	Usage:       "p1v <inputPath>",
-			// 	Description: "verify phase 1 contributions for Groth16",
-			// 	Action:      p1v,
-			// },
-			// /* ------------------ Phase 1 Transform from PPoT Ceremony ------------------ */
-			// {
-			// 	Name:        "p1t",
-			// 	Usage:       "p1t <inputPath> <outputPath> <originalPower> <reducedPower>",
-			// 	Description: "transforms output of PPoT ceremony to be usable by semaphore-mtb-setup",
-			// 	Action:      p1t,
-			// },
-			// /* ------------------ Phase 1 Verify from transformed file ------------------ */
-			// {
-			// 	Name:        "p1vt",
-			// 	Usage:       "p1vt <inputPath> <transformedPath",
-			// 	Description: "verify phase 1 contributions for Groth16 based on transformed PPoT ceremony file",
-			// 	Action:      p1vt,
-			// },
 		},
 	}
 
