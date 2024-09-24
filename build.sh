@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for ARCH in darwin_amd64 darwin_arm64 linux_386 linux_arm64 linux_arm; do
+for ARCH in darwin_amd64 darwin_arm64 linux_amd64 linux_386 linux_arm64 linux_arm; do
   case "$ARCH" in
     darwin_amd64)
       # For Intel-based MacBooks and other x86_64 machines
