@@ -176,11 +176,15 @@ func keys(cCtx *cli.Context) error {
 
 	pk, vk := mpcsetup.ExtractKeys(phase1, phase2, evals, nbConstraints)
 
+	// write the proving key
 	pkFile, err := os.Create("pk")
 	if err != nil {
 		return err
 	}
-	pk.WriteTo(pkFile)
+	defer pkFile.Close()
+	if err = pk.WriteDump(pkFile); err != nil {
+		return err
+	}
 
 	vkFile, err := os.Create("vk")
 	if err != nil {
